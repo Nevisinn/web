@@ -1,14 +1,17 @@
 {% extends 'analytics/base.html' %}
 
 {% block content %}
-<h1>{{title}}</h1>
-<ul>
-    {%for p in posts %}
-    <li>
-        <h2>{{p.title}}</h2>
-        <p>{{p.content}}</p>
-        <hr>
-    </li>
-    {% endfor %}
+<ul class="list-articles">
+	{% for p in posts %}
+			<li><h2>{{p.title}}</h2>
+	{% autoescape on %}
+	{{p.content|linebreaks|truncatewords:50}}
+	{% endautoescape %}
+			<div class="clear"></div>
+	{% if p.photo %}
+		<p><img class ="img-article-centre thumb" src="{{p.photo.url}}"></p>
+	{% endif %}
+			</li>
+	{% endfor %}
 </ul>
 {% endblock %}

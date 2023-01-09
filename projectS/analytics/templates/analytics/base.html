@@ -1,19 +1,62 @@
+
 <!DOCTYPE html>
-<html lang="en">
+{% load static %}
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>{{title}}</title>
+	<title>{{title}}</title>
+	<link type="text/css" href="{% static 'analytics/css/style.css' %}" rel="stylesheet" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="shortcut icon" href="{% static 'analytics/images/main.ico' %}" type="image/x-icon"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-{% block mainmenu %}
-<ul>
-    {% for m in menu %}
-<li>{{m}}</li>
-    {% endfor %}
-</ul>
-{% endblock mainmenu %}
 
+<table class="title" border=0 cellpadding="0" cellspacing="0">
+<tr><td valign=top>
+{% block title %}
+		<div class="header">
+			<ul id="title" class="title">
+			<li class="logo"><a href="{% url 'home' %}"><div class="logo"></div></a></li>
+			<li>Специалист по информационной безопасности</li>
+			</ul>
+			<div class="clear"></div>
+		</div>
+{% endblock title %}
+
+
+<table class="left_menu" border=0 cellpadding="0" cellspacing="0">
+<tr>
+<!-- Sidebar слева -->
+	<td valign="top" class="menu">
+	<ul id="menu">
+		<li><a href="/relevance/">Востребованность</a></li>
+		<li><a href="/geography/">География</a></li>
+		<li><a href="/skills/">Навыки</a></li>
+		<li><a href="/vacancy/">Последние вакансии</a></li>
+		</li>
+	</ul>
+</td>
+<!-- Конец Sidebar'а -->
+<td valign="top" class="content">
+	<!-- Хлебные крошки -->
+	{% block breadcrumbs %}
+	{% endblock %}
+
+<!-- Блок контента -->
+	<div class="content-text">
 {% block content %}
 {% endblock %}
+	</div>
+<!-- Конец блока контента -->
+
+</td></tr></table>
+</td></tr>
+<!-- Footer -->
+<tr><td valign=top>
+	<div id="footer">
+		<p>Шубин Игорь Васильевич РИ-210941</p>
+	</div>
+</td></tr></table>
+<!-- Конец footer'а и страницы -->
 </body>
 </html>

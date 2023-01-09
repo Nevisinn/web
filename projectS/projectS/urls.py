@@ -17,16 +17,16 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-from analytics.views import index,about
+from analytics.views import index,relevance,geography,skills,vacancy
 from projectS import settings
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
-    path('', index),
-    path('about/',about)
-    # path('', analytics),
-    # path('relevance/', categories)
-
+    path('admin/', admin.site.urls),
+    path('',index, name='home'),
+    path('relevance/', relevance,name='relevance'),
+    path('geography/', geography,name='geography'),
+    path('skills/', skills,name='skills'),
+    path('vacancy/', vacancy,name='vacancy')
 ]
 
 if settings.DEBUG:
