@@ -19,7 +19,13 @@ def relevance(request):
     return render(request,'analytics/relevance.html',{'menu':menu,'title':'Востребованность профессии'})
 
 def geography(request):
-    return render(request,'analytics/geography.html',{'menu':menu,'title':'География'})
+    inf = Geography.objects.all()
+    context ={
+        'inf':inf,
+        'menu':menu,
+        'title':'География'
+    }
+    return render(request,'analytics/geography.html',context=context)
 
 def skills(request):
     return render(request,'analytics/skills.html',{'menu':menu,'title':'Навыки'})
