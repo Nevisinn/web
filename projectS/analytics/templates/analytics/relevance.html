@@ -1,6 +1,17 @@
 {% extends 'analytics/base.html' %}
 
 {% block content %}
-<h1>{{title}}</h1>
-<p>Содержимое главной страницы
+<ul class="list-rel">
+	{% for r in rel %}
+			<li><h2>{{r.title}}</h2>
+	{% autoescape on %}
+	{{r.content|linebreaks|truncatewords:50}}
+	{% endautoescape %}
+			<div class="clear"></div>
+	{% if r.photo %}
+		<p><img class ="img-article-centre thumb" src="{{r.photo.url}}"></p>
+	{% endif %}
+			</li>
+	{% endfor %}
+</ul>
 {% endblock %}

@@ -2,14 +2,14 @@
 
 {% block content %}
 <ul class="list-geogr">
-	{% for i in inf %}
-			<li><h2>{{i.title}}</h2>
+	{% for g in geo %}
+			<li><h2>{{g.title}}</h2>
 	{% autoescape on %}
-	{{i.content|linebreaks|truncatewords:50}}
+	{{g.content|linebreaks|truncatewords:50}}
 	{% endautoescape %}
 			<div class="clear"></div>
-	{% if i.photo %}
-		<p><img class ="img-article-centre thumb" src="{{i.photo.url}}"></p>
+	{% if g.photo %}
+		<p><img class ="img-article-centre thumb" src="{{g.photo.url}}"></p>
 	{% endif %}
 			</li>
 	{% endfor %}

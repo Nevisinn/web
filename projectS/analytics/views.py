@@ -16,12 +16,18 @@ def index(request):
     return render(request,'analytics/index.html', context=context)
 
 def relevance(request):
-    return render(request,'analytics/relevance.html',{'menu':menu,'title':'Востребованность профессии'})
+    rel = Relevance.objects.all()
+    context ={
+        'rel':rel,
+        'menu':menu,
+        'title':'Востребованность'
+    }
+    return render(request,'analytics/relevance.html',context=context)
 
 def geography(request):
-    inf = Geography.objects.all()
+    geo = Geography.objects.all()
     context ={
-        'inf':inf,
+        'geo':geo,
         'menu':menu,
         'title':'География'
     }
