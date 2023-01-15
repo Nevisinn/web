@@ -5,12 +5,13 @@
 	{% for p in posts %}
 			<li><h2>{{p.title}}</h2>
 	{% autoescape on %}
-	{{p.content|linebreaks|truncatewords:50}}
+				{% if p.photo %}
+				<p><img class ="img-article-centre thumb" src="{{p.photo.url}}" align="right" vspace="5" hspace="5"> </p>
+	{{p.content|linebreaks}}
+
+	{% endif %}
 	{% endautoescape %}
 			<div class="clear"></div>
-	{% if p.photo %}
-		<p><img class ="img-article-centre thumb" src="{{p.photo.url}}"></p>
-	{% endif %}
 			</li>
 	{% endfor %}
 </ul>
